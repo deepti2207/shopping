@@ -1,0 +1,25 @@
+{% extends 'seler/base2.html' %}
+{% load crispy_forms_tags %}
+{% block main-content %} 
+<div class="container">
+<div class="row my-3">
+<div class="col-sm-6 offset-sm-3">
+<form method='POST'  enctype= "multipart/form-data">
+{% csrf_token %}
+<div class="row">
+	<div class="col-md-5 center">
+		<h5>Update the Status of Product:</h5>
+		<hr>
+		<div class="card card-body">
+        {{form|crispy}}
+        <button type="submit" class="btn btn-outline-success mt-5">Update</button>
+        {% comment %} <button type="submit">submit</button> {% endcomment %}
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock main-content %}
+{% comment %} <input type='submit' class='btn btn-primary'></> {% endcomment %}

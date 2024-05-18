@@ -1,0 +1,23 @@
+{% extends 'seler/base2.html' %}
+{% load crispy_forms_tags %}
+
+{% block main-content %} 
+
+{%  include 'seler/status.html' %}
+
+
+<div class="row">
+    {% for product in products %}
+        <div class="col-md-3">
+            <div class="card">
+                <div>
+                     <img src="{{product.product_image.url}}" alt="" width="500px" height="400px">
+                        <br><center>{{product.title}}<br>
+                        {{product.description}}</center><br>
+                </div>
+            </div>
+
+    {% endfor %}
+</div>
+
+{% endblock %}

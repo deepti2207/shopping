@@ -1,0 +1,17 @@
+{% extends 'seler/base2.html' %}
+{% load crispy_forms_tags %}
+{% block main-content %} 
+<div class="container">
+<div class="row my-3">
+<div class="col-sm-6 offset-sm-3">
+<form method='POST'  enctype= "multipart/form-data">
+{% csrf_token %}
+{{product|crispy}}
+<button type="submit">submit</button>
+</form>
+</div>
+</div>
+</div>
+
+{% endblock main-content %}
+{% comment %} <input type='submit' class='btn btn-primary'></> {% endcomment %}

@@ -1,0 +1,22 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}select role{% endblock title %}
+{% block main-content %}
+   
+ 
+ <div class="container mx-auto">
+  <div class="row">
+    <div class="col-sm-6 offset-sm-3">
+    <div class='row '>
+        <div class='col-6'>
+        {% comment %} href="{% url 'seler/seller_Registration' %}" {% endcomment %}
+            <a><button type="button"  class="btn btn-outline-primary my-5 ">seller</button></a>
+        </div>
+        <div class='col-6'>
+          <a href="{% url 'customerregistration' %}">  <button type="button" class="btn btn-outline-primary my-5 ">Customer</button></a>
+        </div>
+    </div>
+    </div>
+  </div>
+</div>
+{% endblock main-content %}

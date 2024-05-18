@@ -1,0 +1,115 @@
+{% extends 'seler/base2.html' %}
+{% load crispy_forms_tags %}
+
+{% block main-content %} 
+
+{%  include 'seler/status.html' %}
+
+<div class="row">
+	<div class="col-md-5">
+		<h5>Products:</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'product_upload' %}">Add Product</a>
+			<table class="table ta.ble-sm">
+				<tr>
+					<th></th>
+					<th>Title</th>
+					<th>Brand</th>
+					<th>Product_id</th>
+				</tr>
+
+				 {% for product in productss %}
+					<tr>
+						<td><a class="btn btn-sm btn-info" href="{% url 'Product_detail' product.id %}">View</a></td>
+						<td>{{product.title}}</td>
+						<td>{{product.brand}}</td>
+						<td>{{product.id}}</td>
+					</tr>
+				{% endfor %} 
+
+			</table>
+		</div>
+	</div>
+
+
+
+
+            <div class="col-md-7">
+                <h5>LAST 20 ORDERS</h5>
+                <hr>
+                <div class="card card-body">
+                    <a class="btn btn-primary  btn-sm btn-block" href="{% url 'profile' %}">Create Order</a>
+                    <table class="table table-sm">
+                        <tr>
+                            <th>Product</th><hr>
+                            <th>Date Orderd</th>
+                            <th>Status</th>
+                            <th>Update</th>
+                            <th>Remove</th>
+                            <th>user</th>
+                        </tr>
+
+                        {% for k in ordersss %}
+                            {% if k.product.author == request.user %}
+                            <ol>
+                                <tr>
+                                    <td>{{k.product.id}}</td>
+                                    <td>{{k.ordered_date}}</td>
+                                    <td>{{k.status}}</td> 
+                                    <td><a href="{% url 'update_order' k.id %}"><button class="btn btn-sm btn-warning">Update</a></td>
+                                    <td><a><button class="btn btn-sm btn-danger">Remove</a></td>
+                                    <td>{{k.user}}</td>
+                                    <td></a></td>
+
+                                    <td></a></td>
+
+                                </tr>
+                            </ol>
+                            {% endif %}
+                        {% endfor %}
+{% comment %} 
+                        {% for order in orders %}
+                            <tr>
+                                <td>{{order.product.author}}</td>
+                                <td>{{order.ordered_date}}</td>
+                                <td>{{order.status}}</td> 
+                                <td></td>
+                                <td></td>
+                                <td>{{order.user}}</td>
+                                <td></a></td>
+
+                                <td></a></td>
+
+                            </tr>
+                        {% endfor %} {% endcomment %}
+                        
+
+                
+                    </table>
+                </div>
+            </div>
+
+
+
+
+{% comment %} <div class="container">
+<div class="row">
+{% for i in productss %}
+<div class="col-4 mt-3 left">
+<div class="card mb-0">
+                
+<div class="card-body">
+
+    {{i.title}}<br>
+    <div class="col-4"><img src="{{i.product_image.url}}" class="card-img-top img-thumbnail" style="height:450px;width:600px"><br></div>
+
+</div>
+</div>
+</div>
+{% endfor %}
+</div>
+</div> {% endcomment %}
+
+{% comment %} {{productss.title}} {% endcomment %}
+{% endblock %}
